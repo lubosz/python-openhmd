@@ -4,14 +4,14 @@ from distutils.core import setup
 from distutils.extension import Extension
 from Cython.Distutils import build_ext
  
-module1 = Extension("balanceboard", 
-    ["balanceboard.pyx", "BalanceBoard.cpp"], 
+module1 = Extension("rift", 
+    ["rift.pyx", "Rift.cpp"], 
     language="c++",
-    libraries=["wiicpp"],
-    include_dirs=['/usr/include/wiic'])
+    libraries=["openhmd"],
+    include_dirs=['/usr/include/openhmd'])
  
-setup(name = 'balanceboard',
+setup(name = 'rift',
     version = '1.0',
-    description = 'Python WiiCpp Wrapper',
+    description = 'Python OpenHMD Wrapper',
     ext_modules=[module1],
     cmdclass = {'build_ext': build_ext})
