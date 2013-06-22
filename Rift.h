@@ -1,16 +1,17 @@
 #include <openhmd.h>
 #include <string>
+#include <vector>
 
 class Rift {
   ohmd_context* ctx;
   ohmd_device* hmd;
   int num_devices;
-  float rotation[4];
   
  public:
   Rift();
   ~Rift();
 
+  std::vector<float> rotation;
   void inputLoop();
   void printDeviceInfo();
   void poll();

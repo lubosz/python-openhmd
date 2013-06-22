@@ -1,8 +1,10 @@
+from libcpp.vector cimport vector
+
 cdef extern from "Rift.h":
     cdef cppclass Rift:
         Rift()
         
-        float rotation[4]
+        vector[float] rotation
 
         void printDeviceInfo()
         void poll()

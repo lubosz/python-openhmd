@@ -1,10 +1,12 @@
 #!/usr/bin/python
 
-from balanceboard import PyBalanceBoard
+from rift import PyRift
 
-foo = PyBalanceBoard.getInstance()
+foo = PyRift()
 
-while foo.hasWiiMotes():
+while True:
   foo.poll()
-  #print(foo.topLeft)
-  foo.printSensors()
+  print("rotation quat: %f %f %f %f" % (foo.rotation[0], 
+    foo.rotation[1], 
+    foo.rotation[2], 
+    foo.rotation[3]))

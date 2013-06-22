@@ -5,6 +5,8 @@
 #include "Rift.h"
 
 Rift::Rift() {
+  rotation = std::vector<float>(4);
+
 	ctx = ohmd_ctx_create();
 
 	// Probe for devices
@@ -74,8 +76,11 @@ void Rift::printSensors() {
 }
 
 void Rift::poll() {
+    float rot[4];
 		ohmd_ctx_update(ctx);
-		ohmd_device_getf(hmd, OHMD_ROTATION_QUAT, rotation);
+		ohmd_device_getf(hmd, OHMD_ROTATION_QUAT, rot);
+		for(int i = 0; i < 4; i++)
+		  rotation[i] = rot[i];
 		sleep(.01);
 }
 
