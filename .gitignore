@@ -5,4 +5,4 @@ Makefile
 cmake_install.cmake
 test
 build
-rift.cpp
+pyrift.cpp
