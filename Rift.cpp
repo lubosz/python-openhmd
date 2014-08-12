@@ -6,7 +6,14 @@
 
 Rift::Rift() {
   rotation = std::vector<float>(4);
+  connect();
+}
 
+Rift::~Rift() {
+  ohmd_ctx_destroy(ctx);
+}
+
+void Rift::connect() {
 	ctx = ohmd_ctx_create();
 
 	// Probe for devices
@@ -23,10 +30,6 @@ Rift::Rift() {
 		printf("failed to open device: %s\n", ohmd_ctx_get_error(ctx));
 		return;
 	}
-}
-
-Rift::~Rift() {
-  ohmd_ctx_destroy(ctx);
 }
 
 void Rift::printDeviceInfo() {
@@ -100,4 +103,10 @@ void Rift::print(std::string name, int len, ohmd_float_value val) {
 	for(int i = 0; i < len; i++)
 		printf("%f ", f[i]);
 	printf("\n");
+}
+
+void Rift::reset(){
+  ohmd_ctx_destroy(ctx);
+  sleep(.1);
+  connect();
 }

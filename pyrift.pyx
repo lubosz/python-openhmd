@@ -8,6 +8,7 @@ cdef extern from "Rift.h":
 
         void printDeviceInfo()
         void poll()
+        void reset()
         void printSensors()
         void inputLoop()
         
@@ -24,7 +25,10 @@ cdef class PyRift:
         
     def poll(self):
         self.thisptr.poll()
-        
+
+    def reset(self):
+        self.thisptr.reset()
+
     def inputLoop(self):
         self.thisptr.inputLoop()
 

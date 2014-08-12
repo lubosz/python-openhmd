@@ -16,8 +16,10 @@ class Rift {
   void printDeviceInfo();
   void poll();
   void printSensors();
+  void reset();
 
  private:
   void print(std::string name, int len, ohmd_float_value val);
   void sleep(double seconds);
+  void connect();
 };
