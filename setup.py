@@ -5,7 +5,7 @@ from distutils.extension import Extension
 from Cython.Distutils import build_ext
  
 module1 = Extension("rift", 
-    ["rift.pyx", "Rift.cpp"], 
+    ["pyrift.pyx", "Rift.cpp"],
     language="c++",
     libraries=["openhmd"],
     include_dirs=['/usr/include/openhmd'])
