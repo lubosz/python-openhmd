@@ -5,6 +5,10 @@ cdef extern from "OpenHMD.h":
         OpenHMD()
         
         vector[float] rotation
+        vector[float] leftprojectionmatrix
+        vector[float] leftviewmatrix
+        vector[float] rightprojectionmatrix
+        vector[float] rightviewmatrix
 
         void printDeviceInfo()
         void poll()

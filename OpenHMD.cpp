@@ -6,6 +6,10 @@
 
 OpenHMD::OpenHMD() {
   rotation = std::vector<float>(4);
+  leftprojectionmatrix = std::vector<float>(16);
+  rightprojectionmatrix = std::vector<float>(16);
+  leftviewmatrix = std::vector<float>(16);
+  rightviewmatrix = std::vector<float>(16);
   connect();
 }
 
@@ -60,6 +64,10 @@ void OpenHMD::printDeviceInfo() {
 	print("right eye aspect:", 1, OHMD_RIGHT_EYE_ASPECT_RATIO);
 	print("distortion k:",     6, OHMD_DISTORTION_K);
 
+	int bcount[1];
+	ohmd_device_geti(hmd, OHMD_BUTTON_COUNT, bcount);
+	printf("digital button count: %i\n", bcount[0]);
+ 
 	printf("\n");
 }
 
@@ -80,10 +88,33 @@ void OpenHMD::printSensors() {
 
 void OpenHMD::poll() {
     float rot[4];
+    float matrix[16];
 		ohmd_ctx_update(ctx);
+		//Rotation Quaternion
 		ohmd_device_getf(hmd, OHMD_ROTATION_QUAT, rot);
 		for(int i = 0; i < 4; i++)
 		  rotation[i] = rot[i];
+
+		//Left Projection Matrix
+		ohmd_device_getf(hmd, OHMD_LEFT_EYE_GL_PROJECTION_MATRIX, matrix);
+		for(int i = 0; i < 16; i++)
+		  leftprojectionmatrix[i] = matrix[i];
+
+		//Left Modelview Matrix
+		ohmd_device_getf(hmd, OHMD_LEFT_EYE_GL_MODELVIEW_MATRIX, matrix);
+		for(int i = 0; i < 16; i++)
+		  leftviewmatrix[i] = matrix[i];
+
+		//Right Projection Matrix
+		ohmd_device_getf(hmd, OHMD_RIGHT_EYE_GL_PROJECTION_MATRIX, matrix);
+		for(int i = 0; i < 16; i++)
+		  rightprojectionmatrix[i] = matrix[i];
+
+		//Right Modelview Matrix
+		ohmd_device_getf(hmd, OHMD_RIGHT_EYE_GL_MODELVIEW_MATRIX, matrix);
+		for(int i = 0; i < 16; i++)
+		  rightviewmatrix[i] = matrix[i];
+
 		sleep(.01);
 }
 

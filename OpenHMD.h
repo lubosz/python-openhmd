@@ -12,6 +12,11 @@ class OpenHMD {
   ~OpenHMD();
 
   std::vector<float> rotation;
+  std::vector<float> leftprojectionmatrix;
+  std::vector<float> leftviewmatrix;
+  std::vector<float> rightprojectionmatrix;
+  std::vector<float> rightviewmatrix;
+
   void inputLoop();
   void printDeviceInfo();
   void poll();
