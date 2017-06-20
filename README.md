@@ -1,7 +1,7 @@
-python-rift
+python-openhmd
 ===========
 
-Python OpenHMD bindings for Oculus Rift
+Python OpenHMD bindings
 
 ## Dependencies
 
@@ -16,7 +16,7 @@ $ ./setup.py install
 
 ## Arch Linux Package
 
-* https://aur.archlinux.org/packages/python-rift-git/
+* https://aur.archlinux.org/packages/python-rift-git/ (old python-rift version)
 
 ## Blog Post
 

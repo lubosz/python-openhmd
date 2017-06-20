@@ -1,8 +1,8 @@
-#include "Rift.h"
+#include "OpenHMD.h"
 
 int main(int argc, char** argv) {
-  Rift * rift = new Rift();
-  rift->printDeviceInfo();
-  rift->inputLoop();	
+  OpenHMD * openhmd = new OpenHMD();
+  openhmd->printDeviceInfo();
+  openhmd->inputLoop();	
 	return 0;
 }

@@ -2,14 +2,14 @@
 #include <string>
 #include <vector>
 
-class Rift {
+class OpenHMD {
   ohmd_context* ctx;
   ohmd_device* hmd;
   int num_devices;
   
  public:
-  Rift();
-  ~Rift();
+  OpenHMD();
+  ~OpenHMD();
 
   std::vector<float> rotation;
   void inputLoop();

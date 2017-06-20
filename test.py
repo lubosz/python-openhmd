@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
-from rift import PyRift
+from openhmd import PyOpenHMD
 
-foo = PyRift()
+foo = PyOpenHMD()
 
 while True:
   foo.poll()

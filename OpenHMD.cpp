@@ -2,18 +2,18 @@
 #include <sys/time.h>
 #include <stdio.h>
 
-#include "Rift.h"
+#include "OpenHMD.h"
 
-Rift::Rift() {
+OpenHMD::OpenHMD() {
   rotation = std::vector<float>(4);
   connect();
 }
 
-Rift::~Rift() {
+OpenHMD::~OpenHMD() {
   ohmd_ctx_destroy(ctx);
 }
 
-void Rift::connect() {
+void OpenHMD::connect() {
 	ctx = ohmd_ctx_create();
 
 	// Probe for devices
@@ -32,7 +32,7 @@ void Rift::connect() {
 	}
 }
 
-void Rift::printDeviceInfo() {
+void OpenHMD::printDeviceInfo() {
 
 	printf("num devices: %d\n\n", num_devices);
 
@@ -63,7 +63,7 @@ void Rift::printDeviceInfo() {
 	printf("\n");
 }
 
-void Rift::inputLoop() {
+void OpenHMD::inputLoop() {
 	// Ask for n rotation quaternions
 	for(int i = 0; i < 10000; i++){
 		poll();
@@ -71,14 +71,14 @@ void Rift::inputLoop() {
 	}
 }
 
-void Rift::printSensors() {
+void OpenHMD::printSensors() {
 	  printf("rotation quat:");
 	  for(int i = 0; i < 4; i++)
 		  printf("%f ", rotation[i]);
 	  printf("\n");
 }
 
-void Rift::poll() {
+void OpenHMD::poll() {
     float rot[4];
 		ohmd_ctx_update(ctx);
 		ohmd_device_getf(hmd, OHMD_ROTATION_QUAT, rot);
@@ -87,7 +87,7 @@ void Rift::poll() {
 		sleep(.01);
 }
 
-void Rift::sleep(double seconds) {
+void OpenHMD::sleep(double seconds) {
 	struct timespec sleepfor;
 	sleepfor.tv_sec = (time_t)seconds;
 	sleepfor.tv_nsec = (long)((seconds - sleepfor.tv_sec) * 1000000000.0);
@@ -96,7 +96,7 @@ void Rift::sleep(double seconds) {
 
 
 // gets float values from the device and prints them
-void Rift::print(std::string name, int len, ohmd_float_value val) {
+void OpenHMD::print(std::string name, int len, ohmd_float_value val) {
 	float f[len];
 	ohmd_device_getf(hmd, val, f);
 	printf("%-20s", name.c_str());
@@ -105,7 +105,7 @@ void Rift::print(std::string name, int len, ohmd_float_value val) {
 	printf("\n");
 }
 
-void Rift::reset(){
+void OpenHMD::reset(){
   ohmd_ctx_destroy(ctx);
   sleep(.1);
   connect();

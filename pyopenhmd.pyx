@@ -1,8 +1,8 @@
 from libcpp.vector cimport vector
 
-cdef extern from "Rift.h":
-    cdef cppclass Rift:
-        Rift()
+cdef extern from "OpenHMD.h":
+    cdef cppclass OpenHMD:
+        OpenHMD()
         
         vector[float] rotation
 
@@ -13,10 +13,10 @@ cdef extern from "Rift.h":
         void inputLoop()
         
 
-cdef class PyRift:
-    cdef Rift* thisptr      # hold a C++ instance which we're wrapping
+cdef class PyOpenHMD:
+    cdef OpenHMD* thisptr      # hold a C++ instance which we're wrapping
     def __cinit__(self):
-        self.thisptr = new Rift()
+        self.thisptr = new OpenHMD()
     def __dealloc__(self):
         del self.thisptr
  
