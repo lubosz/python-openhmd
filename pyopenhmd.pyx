@@ -41,3 +41,11 @@ cdef class PyOpenHMD:
 
     property rotation:
       def __get__(self): return self.thisptr.rotation
+    property leftprojectionmatrix:
+      def __get__(self): return self.thisptr.leftprojectionmatrix
+    property leftviewmatrix:
+      def __get__(self): return self.thisptr.leftviewmatrix
+    property rightprojectionmatrix:
+      def __get__(self): return self.thisptr.rightprojectionmatrix
+    property rightviewmatrix:
+      def __get__(self): return self.thisptr.rightviewmatrix
