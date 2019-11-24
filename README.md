@@ -1,5 +1,14 @@
 python-openhmd
 ===========
+Changes were made based on this commit:
+
+https://github.com/OpenHMD/OpenHMD/commit/2a3b34b61298a63cab72c9b3d4f665088a329204
+
+This build is untested.
+
+
+This failed when trying to build with libopenhmd-dev and libopenhmd0 due to the header file, /usr/include/open
+hmd/openhmd.h being different then the header file installed when building from source.
 
 Python OpenHMD bindings
 
@@ -9,9 +18,28 @@ Python OpenHMD bindings
 * Cython
 
 ## Install
-
 ```
-$ ./setup.py install
+sudo apt-get install libudev-dev libusb-1.0-0-dev libfox-1.6-dev
+sudo apt-get install autotools-dev autoconf automake libtool
+git clone https://github.com/signal11/hidapi.git
+cd hidapi
+./bootstrap
+./configure
+make
+sudo make install
+cd ..
+git clone https://github.com/OpenHMD/OpenHMD.git
+cd OpenHMD
+mkdir build
+cd build
+cmake ..   <---- see project readme for proper cmake commadn
+make
+sudo make install
+cd ../..
+git clone https://github.com/hephaestus9/python-openhmd.git
+cd python-openhmd
+sudo pip3 install cython
+python3 setup.py install
 ```
 
 ## Arch Linux Package
