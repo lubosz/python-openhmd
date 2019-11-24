@@ -15,6 +15,7 @@ Python OpenHMD bindings
 * Cython
 
 ## Install
+```
 sudo apt-get install libudev-dev libusb-1.0-0-dev libfox-1.6-dev
 sudo apt-get install autotools-dev autoconf automake libtool
 git clone https://github.com/signal11/hidapi.git
@@ -36,7 +37,7 @@ git clone https://github.com/hephaestus9/python-openhmd.git
 cd python-openhmd
 sudo pip3 install cython
 python3 setup.py install
-
+```
 
 ## Arch Linux Package
 
