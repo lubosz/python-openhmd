@@ -7,6 +7,9 @@ https://github.com/OpenHMD/OpenHMD/commit/2a3b34b61298a63cab72c9b3d4f665088a3292
 This build is untested.
 
 
+This failed when trying to build with libopenhmd-dev and libopenhmd0 due to the header file, /usr/include/open
+hmd/openhmd.h being different then the header file installed when building from source.
+
 Python OpenHMD bindings
 
 ## Dependencies
