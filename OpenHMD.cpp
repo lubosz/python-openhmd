@@ -65,7 +65,7 @@ void OpenHMD::printDeviceInfo() {
 	print("distortion k:",     6, OHMD_DISTORTION_K);
 
 	int bcount[1];
-	ohmd_device_geti(hmd, OHMD_BUTTON_COUNT, bcount);
+	ohmd_device_geti(hmd, OHMD_CONTROL_COUNT, bcount);
 	printf("digital button count: %i\n", bcount[0]);
  
 	printf("\n");
